@@ -23,7 +23,11 @@ const statusBadgeVariants = cva(
 
 export function LiveDot({ className }: { className?: string }) {
   return (
-    <span className={cn('relative flex h-2 w-2', className)} aria-hidden="true">
+    <span
+      data-slot="live-dot"
+      className={cn('relative flex h-2 w-2', className)}
+      aria-hidden="true"
+    >
       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
       <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
     </span>
@@ -46,6 +50,8 @@ export function StatusBadge({
   const renderDot = showDot ?? variant === 'live'
   return (
     <span
+      data-slot="status-badge"
+      data-variant={variant ?? 'neutral'}
       className={cn(statusBadgeVariants({ variant }), className)}
       {...props}
     >
